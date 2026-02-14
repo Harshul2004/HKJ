@@ -8,7 +8,7 @@ const SystemStatus = () => {
   const statusData = [
     {
       label: 'NAME',
-      value: 'Harshul Jangra'
+      value: 'Harshul Kumar Jangra'
     },
     {
       label: 'STATUS',

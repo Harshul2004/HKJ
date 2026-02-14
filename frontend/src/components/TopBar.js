@@ -6,7 +6,7 @@ const TopBar = () => {
   const { xp, devModeUnlocked, unlockDevMode } = useXP();
 
   const handleDevModeClick = () => {
-    if (xp >= 100 && !devModeUnlocked) {
+    if (xp >= 500 && !devModeUnlocked) {
       unlockDevMode();
     }
   };
@@ -21,18 +21,38 @@ const TopBar = () => {
         </div>
       </div>
       <div className="top-bar-right">
-        <div 
-          className={`xp-counter ${xp >= 100 && !devModeUnlocked ? 'unlockable' : ''} ${devModeUnlocked ? 'dev-active' : ''}`}
+        <div
+          className={`xp-container ${xp >= 500 && !devModeUnlocked ? 'unlockable' : ''} ${devModeUnlocked ? 'dev-active' : ''}`}
           onClick={handleDevModeClick}
         >
-          <span className="xp-label">XP:</span>
-          <span className="xp-value">{xp}</span>
-          {xp >= 100 && !devModeUnlocked && (
-            <span className="xp-hint">CLICK TO UNLOCK</span>
-          )}
-          {devModeUnlocked && (
-            <span className="dev-badge">DEV MODE</span>
-          )}
+          <div className="xp-info-row">
+            <div className="xp-text">
+              <span className="xp-label">XP:</span>
+              <span className="xp-value">{xp}</span>
+              <span className="xp-separator">/</span>
+              <span className="xp-target">500</span>
+            </div>
+
+            <div className="xp-status-text">
+              {devModeUnlocked ? (
+                <span className="status-active">DEVELOPER MODE ACTIVE</span>
+              ) : (
+                <span className="status-pending">
+                  {xp >= 500 ? "CLICK TO UNLOCK" : "DEV MODE PROGRESS"}
+                </span>
+              )}
+            </div>
+          </div>
+
+          <div className="xp-progress-track">
+            <div
+              className="xp-progress-fill"
+              style={{ width: `${Math.min((xp / 500) * 100, 100)}%` }}
+            ></div>
+          </div>
+
+          {/* Visual Badge for Dev Mode - Optional/Subtle */}
+          {devModeUnlocked && <div className="dev-mode-glow"></div>}
         </div>
       </div>
     </div>

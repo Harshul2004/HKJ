@@ -10,6 +10,7 @@ import AccessTerminal from './pages/AccessTerminal';
 import { AudioProvider } from './context/AudioContext';
 import { XPProvider } from './context/XPContext';
 import CustomCursor from './components/CustomCursor';
+import GlobalAudioEngine from './components/GlobalAudioEngine';
 import './App.css';
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
       <AudioProvider>
         <XPProvider>
           <CustomCursor />
+          <GlobalAudioEngine />
           <Routes>
             {!systemInitialized ? (
               <Route path="*" element={<BootSequence onAccess={handleSystemAccess} />} />

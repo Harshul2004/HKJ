@@ -1,7 +1,76 @@
 .access-terminal-page {
   animation: fadeIn 0.5s ease;
+  min-height: 80vh;
 }
 
+/* Restricted Mode */
+.restricted-container {
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 60px 40px;
+  text-align: center;
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  background: rgba(20, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+}
+
+.lock-icon {
+  font-size: 60px;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.6));
+}
+
+.restricted-container h2 {
+  color: #ff5f56;
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+}
+
+.restricted-container p {
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 40px;
+}
+
+.progress-section {
+  text-align: left;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #00ffff;
+  font-family: 'Space Grotesk', monospace;
+}
+
+.restricted-progress-track {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.restricted-progress-fill {
+  height: 100%;
+  background: #00ffff;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+  transition: width 0.5s ease;
+}
+
+.hint-text {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4) !important;
+  text-align: center;
+  margin-top: 20px;
+  letter-spacing: 1px;
+}
+
+/* Terminal Styles */
 .terminal-container {
   margin-top: 40px;
   border-radius: 12px;
@@ -10,7 +79,7 @@
 }
 
 .terminal-header {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.8);
   padding: 12px 20px;
   display: flex;
   align-items: center;
@@ -50,10 +119,12 @@
 }
 
 .terminal-body {
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(10, 10, 15, 0.95);
   padding: 24px;
-  min-height: 400px;
+  min-height: 500px;
   font-family: 'Space Grotesk', monospace;
+  overflow-y: auto;
+  max-height: 600px;
 }
 
 .terminal-output {
@@ -63,9 +134,10 @@
 .terminal-line {
   color: #00FFFF;
   font-size: 14px;
-  line-height: 1.8;
+  line-height: 1.6;
   margin-bottom: 4px;
   letter-spacing: 0.5px;
+  white-space: pre-wrap;
 }
 
 .terminal-input-form {
@@ -75,7 +147,7 @@
 }
 
 .terminal-prompt {
-  color: #00FFFF;
+  color: #00ff00;
   font-size: 14px;
   font-weight: 700;
 }
@@ -84,7 +156,8 @@
   flex: 1;
   background: transparent;
   border: none;
-  color: #00FFFF;
+  color: #00ff00;
+  /* Console green */
   font-family: 'Space Grotesk', monospace;
   font-size: 14px;
   outline: none;
@@ -92,144 +165,83 @@
 }
 
 .terminal-input::placeholder {
-  color: rgba(0, 255, 255, 0.3);
+  color: rgba(0, 255, 0, 0.3);
 }
 
-.contact-form-container {
-  margin-top: 30px;
-  padding: 40px;
-  animation: slideUp 0.5s ease;
+.form-placeholder-message {
+  color: rgba(0, 255, 255, 0.5);
+  font-style: italic;
+  font-size: 12px;
 }
 
-.form-title {
-  font-size: 24px;
-  font-weight: 700;
-  color: #00FFFF;
-  letter-spacing: 2px;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-.contact-form {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.form-group {
-  margin-bottom: 24px;
-}
-
-.form-label {
+.form-actions {
   display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.7);
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  margin-bottom: 8px;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
-.label-prompt {
-  color: #00FFFF;
-}
-
-.form-input,
-.form-textarea {
-  width: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(0, 255, 255, 0.2);
-  border-radius: 6px;
-  padding: 14px 16px;
-  color: #ffffff;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 14px;
-  outline: none;
-  transition: all 0.3s ease;
-  letter-spacing: 0.5px;
-}
-
-.form-input:focus,
-.form-textarea:focus {
-  border-color: rgba(0, 255, 255, 0.5);
-  background: rgba(0, 0, 0, 0.7);
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
-}
-
-.form-input::placeholder,
-.form-textarea::placeholder {
-  color: rgba(255, 255, 255, 0.3);
-}
-
-.form-textarea {
-  resize: vertical;
-  min-height: 120px;
-}
-
-.form-submit {
-  width: 100%;
+.form-cancel {
   padding: 16px;
-  background: rgba(0, 255, 255, 0.1);
-  border: 2px solid #00FFFF;
+  background: transparent;
+  border: 1px solid rgba(255, 95, 86, 0.5);
   border-radius: 8px;
-  color: #00FFFF;
+  color: #ff5f56;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 14px;
   font-weight: 700;
-  letter-spacing: 2px;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-top: 12px;
+  flex: 1;
 }
 
-.form-submit:hover {
-  background: rgba(0, 255, 255, 0.2);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(0, 255, 255, 0.3);
+.form-cancel:hover {
+  background: rgba(255, 95, 86, 0.1);
 }
 
-.form-submit:active {
-  transform: translateY(0);
+/* Glitch & Matrix Effects */
+.glitch-active .terminal-container {
+  animation: glitch-anim 0.3s infinite;
 }
 
-.contact-info {
-  max-width: 600px;
-  margin: 30px auto 0;
-  padding: 20px;
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(0, 255, 255, 0.1);
-  border-radius: 8px;
+.matrix-active .terminal-body {
+  background: rgba(0, 20, 0, 0.95);
 }
 
-.info-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 14px;
+.matrix-active .terminal-line,
+.matrix-active .terminal-prompt,
+.matrix-active .terminal-input {
+  color: #00ff00;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.8);
 }
 
-.info-label {
-  color: rgba(255, 255, 255, 0.6);
-  font-weight: 600;
-  letter-spacing: 1px;
-}
+@keyframes glitch-anim {
+  0% {
+    transform: translate(0)
+  }
 
-.info-value {
-  color: #00FFFF;
-  letter-spacing: 0.5px;
+  20% {
+    transform: translate(-2px, 2px)
+  }
+
+  40% {
+    transform: translate(-2px, -2px)
+  }
+
+  60% {
+    transform: translate(2px, 2px)
+  }
+
+  80% {
+    transform: translate(2px, -2px)
+  }
+
+  100% {
+    transform: translate(0)
+  }
 }
 
 @media (max-width: 768px) {
   .terminal-body {
     padding: 16px;
-    min-height: 300px;
-  }
-  
-  .contact-form-container {
-    padding: 24px;
-  }
-  
-  .form-title {
-    font-size: 20px;
+    min-height: 400px;
   }
 }

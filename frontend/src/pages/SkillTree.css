@@ -1,173 +1,163 @@
 .skill-tree-page {
-  animation: fadeIn 0.5s ease;
-  min-height: calc(100vh - 150px);
+  padding: 2rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  /* overflow: hidden; Removed to allow scrolling if needed, though react flow handles its own usually */
+}
+
+.page-header {
+  margin-bottom: 1rem;
+  text-align: center;
+  z-index: 10;
+}
+
+.page-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: #00ffff;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  margin-bottom: 0.5rem;
+}
+
+.page-subtitle {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.2rem;
+  color: #888;
+  letter-spacing: 2px;
 }
 
 .skill-tree-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 60px 0;
   position: relative;
-}
-
-.core-node {
-  margin-bottom: 100px;
-  animation: fadeIn 0.8s ease;
-}
-
-.core-circle {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: rgba(0, 255, 255, 0.05);
-  border: 3px solid #00FFFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  cursor: pointer;
-  transition: all 0.4s ease;
-  box-shadow: 0 0 40px rgba(0, 255, 255, 0.3);
-}
-
-.core-circle:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 60px rgba(0, 255, 255, 0.5);
-}
-
-.core-pulse {
-  position: absolute;
   width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  border: 3px solid #00FFFF;
-  animation: corePulse 3s infinite;
-}
-
-.core-label {
-  font-size: 24px;
-  font-weight: 700;
-  color: #00FFFF;
-  letter-spacing: 3px;
-  text-align: center;
-  z-index: 1;
-}
-
-.branches-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 40px;
-  width: 100%;
-  max-width: 1200px;
-}
-
-.branch-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  animation: slideUp 0.6s ease;
-}
-
-.branch-line {
-  margin-bottom: 20px;
-  filter: drop-shadow(0 0 8px currentColor);
-}
-
-.branch-node {
-  background: rgba(255, 255, 255, 0.03);
+  height: 80vh;
+  /* Fixed height for the flow area */
+  margin: 0 auto;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 20px;
+  overflow: hidden;
+  background: rgba(10, 10, 10, 0.6);
   backdrop-filter: blur(10px);
-  border: 2px solid;
-  border-radius: 12px;
-  padding: 24px;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.1), inset 0 0 20px rgba(0, 255, 255, 0.05);
+}
+
+/* React Flow Styles Override */
+.react-flow__node {
+  font-family: 'Rajdhani', sans-serif;
+  color: #fff;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  width: 100%;
-  min-height: 80px;
+  white-space: normal;
+  /* Ensure text wraps */
+  line-height: 1.2;
 }
 
-.branch-node:hover {
-  transform: translateY(-8px) scale(1.02);
-  background: rgba(255, 255, 255, 0.06);
-  box-shadow: 0 12px 40px rgba(0, 255, 255, 0.2);
+.react-flow__node:hover {
+  transform: scale(1.1);
+  z-index: 10;
 }
 
-.branch-node.expanded {
-  background: rgba(255, 255, 255, 0.08);
-  min-height: auto;
+/* Core Node */
+.react-flow__node-default.node-core {
+  background: rgba(0, 255, 255, 0.1);
+  border: 2px solid #00ffff;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4), inset 0 0 20px rgba(0, 255, 255, 0.2);
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  font-weight: bold;
+  backdrop-filter: blur(5px);
+  text-transform: uppercase;
+  color: #00ffff;
 }
 
-.branch-label {
-  font-size: 18px;
+/* Branch Nodes */
+.react-flow__node-default.node-branch {
+  background: rgba(10, 10, 10, 0.8);
+  border: 1px solid #00ffff;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+  padding: 10px 20px;
+  min-width: 150px;
+  border-radius: 12px;
+  font-size: 1rem;
   font-weight: 600;
-  letter-spacing: 1.5px;
-  margin-bottom: 8px;
+  backdrop-filter: blur(4px);
 }
 
-.branch-details {
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  animation: fadeIn 0.3s ease;
+.node-branch:hover {
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+  border-color: #fff;
 }
 
-.skill-item {
-  margin-bottom: 16px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+/* Child Nodes */
+.react-flow__node-default.node-child {
+  background: rgba(20, 20, 20, 0.9);
+  border: 1px solid rgba(0, 255, 255, 0.5);
+  box-shadow: 0 0 5px rgba(0, 255, 255, 0.1);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  min-width: 120px;
 }
 
-.skill-item:last-child {
-  margin-bottom: 0;
-  padding-bottom: 0;
+.node-child:hover {
+  border-color: #00ffff;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.4);
+}
+
+/* Edges */
+.react-flow__edge-path {
+  stroke: #00ffff;
+  stroke-width: 2;
+  filter: drop-shadow(0 0 2px rgba(0, 255, 255, 0.5));
+}
+
+.react-flow__edge.animated path {
+  stroke-dasharray: 5;
+  animation: dashdraw 1s linear infinite;
+}
+
+@keyframes dashdraw {
+  from {
+    stroke-dashoffset: 10;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Controls */
+.react-flow__controls {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid #00ffff;
+  border-radius: 4px;
+}
+
+.react-flow__controls-button {
+  border-bottom: 1px solid #00ffff;
+  background: transparent;
+  fill: #00ffff;
+}
+
+.react-flow__controls-button:last-child {
   border-bottom: none;
 }
 
-.skill-name {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.7);
-  font-weight: 600;
-  margin-bottom: 6px;
-  letter-spacing: 1px;
+.react-flow__controls-button:hover {
+  background: rgba(0, 255, 255, 0.2);
 }
 
-.skill-items {
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.5);
-  line-height: 1.6;
-}
-
-@keyframes corePulse {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.2);
-    opacity: 0.5;
-  }
-  100% {
-    transform: scale(1.4);
-    opacity: 0;
-  }
-}
-
-@media (max-width: 768px) {
-  .core-circle {
-    width: 150px;
-    height: 150px;
-  }
-  
-  .core-label {
-    font-size: 18px;
-  }
-  
-  .branches-container {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-  
-  .branch-line {
-    display: none;
-  }
+.react-flow__attribution {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.2);
 }
