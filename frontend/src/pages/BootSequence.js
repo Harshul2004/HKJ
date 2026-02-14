@@ -28,10 +28,16 @@ const BootSequence = ({ onAccess }) => {
     return () => clearInterval(interval);
   }, []);
 
+  const handleAccess = () => {
+    if (showEnter) {
+      setTimeout(() => onAccess(), 500);
+    }
+  };
+
   useEffect(() => {
     const handleKeyPress = (e) => {
-      if (e.key === 'Enter' && showEnter) {
-        setTimeout(() => onAccess(), 500);
+      if (e.key === 'Enter') {
+        handleAccess();
       }
     };
 
@@ -40,7 +46,7 @@ const BootSequence = ({ onAccess }) => {
   }, [showEnter, onAccess]);
 
   return (
-    <div className="boot-sequence">
+    <div className="boot-sequence" onClick={handleAccess} style={{ cursor: showEnter ? 'pointer' : 'default' }}>
       <div className="boot-container">
         <div className="boot-lines">
           {lines.map((line, index) => (
@@ -51,7 +57,7 @@ const BootSequence = ({ onAccess }) => {
         </div>
         {showEnter && (
           <div className="boot-enter">
-            <div className="enter-text">PRESS ENTER TO ACCESS</div>
+            <div className="enter-text">PRESS ENTER OR TAP TO ACCESS</div>
             <div className="enter-cursor">_</div>
           </div>
         )}
