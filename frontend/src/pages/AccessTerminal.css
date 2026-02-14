@@ -1,0 +1,235 @@
+.access-terminal-page {
+  animation: fadeIn 0.5s ease;
+}
+
+.terminal-container {
+  margin-top: 40px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.terminal-header {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+.terminal-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.terminal-button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  opacity: 0.8;
+}
+
+.terminal-button.red {
+  background: #ff5f56;
+}
+
+.terminal-button.yellow {
+  background: #ffbd2e;
+}
+
+.terminal-button.green {
+  background: #27c93f;
+}
+
+.terminal-title {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.terminal-body {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 24px;
+  min-height: 400px;
+  font-family: 'Space Grotesk', monospace;
+}
+
+.terminal-output {
+  margin-bottom: 20px;
+}
+
+.terminal-line {
+  color: #00FFFF;
+  font-size: 14px;
+  line-height: 1.8;
+  margin-bottom: 4px;
+  letter-spacing: 0.5px;
+}
+
+.terminal-input-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.terminal-prompt {
+  color: #00FFFF;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.terminal-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #00FFFF;
+  font-family: 'Space Grotesk', monospace;
+  font-size: 14px;
+  outline: none;
+  letter-spacing: 0.5px;
+}
+
+.terminal-input::placeholder {
+  color: rgba(0, 255, 255, 0.3);
+}
+
+.contact-form-container {
+  margin-top: 30px;
+  padding: 40px;
+  animation: slideUp 0.5s ease;
+}
+
+.form-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #00FFFF;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  margin-bottom: 8px;
+}
+
+.label-prompt {
+  color: #00FFFF;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 14px 16px;
+  color: #ffffff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: rgba(0, 255, 255, 0.5);
+  background: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-submit {
+  width: 100%;
+  padding: 16px;
+  background: rgba(0, 255, 255, 0.1);
+  border: 2px solid #00FFFF;
+  border-radius: 8px;
+  color: #00FFFF;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 12px;
+}
+
+.form-submit:hover {
+  background: rgba(0, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 255, 255, 0.3);
+}
+
+.form-submit:active {
+  transform: translateY(0);
+}
+
+.contact-info {
+  max-width: 600px;
+  margin: 30px auto 0;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+}
+
+.info-label {
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.info-value {
+  color: #00FFFF;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+  .terminal-body {
+    padding: 16px;
+    min-height: 300px;
+  }
+  
+  .contact-form-container {
+    padding: 24px;
+  }
+  
+  .form-title {
+    font-size: 20px;
+  }
+}

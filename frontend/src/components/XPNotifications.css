@@ -1,0 +1,73 @@
+.xp-notification {
+  position: fixed;
+  top: 100px;
+  right: 40px;
+  background: rgba(0, 255, 255, 0.9);
+  color: #000;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 1px;
+  animation: slideInRight 0.3s ease, fadeOut 0.5s ease 1.5s forwards;
+  z-index: 10000;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+}
+
+.dev-mode-notification {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 128, 255, 0.95);
+  border: 2px solid #0080FF;
+  padding: 40px 60px;
+  border-radius: 12px;
+  text-align: center;
+  animation: scaleIn 0.5s ease, fadeOut 0.5s ease 4.5s forwards;
+  z-index: 10001;
+  box-shadow: 0 0 50px rgba(0, 128, 255, 0.7);
+}
+
+.notification-title {
+  color: #000;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.notification-text {
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}

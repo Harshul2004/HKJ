@@ -1,0 +1,32 @@
+.main-layout {
+  min-height: 100vh;
+  background: #050505;
+  position: relative;
+  padding-top: 70px;
+  transition: all 0.5s ease;
+}
+
+.main-layout.dev-mode {
+  /* Enhanced visuals in dev mode */
+}
+
+.main-content-wrapper {
+  display: flex;
+  min-height: calc(100vh - 70px);
+  position: relative;
+  z-index: 2;
+}
+
+.main-content {
+  flex: 1;
+  padding: 40px;
+  margin-left: 280px;
+  animation: fadeIn 0.5s ease;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    padding: 20px;
+  }
+}
